@@ -37,11 +37,11 @@ for i in range(N):
         img = open('Flatirons_Winter_Sunrise_edit_2.jpg', 'rb').read()
         hreq = lab6_pb2.rawimageRequest(img=img)
         reply = stub.doRawimage(hreq)
-        print(f'Width = {reply.width}, height = {reply.height}')
+        # print(f'Width = {reply.width}, height = {reply.height}')
     if operation == 'jsonimage':
         img = base64.b64encode(open('Flatirons_Winter_Sunrise_edit_2.jpg', 'rb').read()).decode()
         hreq = lab6_pb2.jsonimageRequest(img=img)
         reply = stub.doJsonimage(hreq)
-        print(f'Width = {reply.width}, height = {reply.height}')
+        # print(f'Width = {reply.width}, height = {reply.height}')
 delta = ((time.perf_counter() - start)/N)*1000
-print("Took", delta, "ms per operation")
+print(f"{operation}: Took", delta, "ms per operation")

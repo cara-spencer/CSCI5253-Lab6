@@ -8,11 +8,14 @@ cd /home/mewu4448
 sudo apt-get update
 sudo apt-get install -y python3 python3-pip
 pip3 install google-cloud-storage grpcio grpcio_tools
+python3 -m pip install --upgrade Pillow
+pip3 install flask jsonpickle
+rm -rf CSCI5253-Lab6
 git clone https://github.com/001cat/CSCI5253-Lab6.git
 cd CSCI5253-Lab6
 make grpc
-nohup python3 grpc-server.py
-nohup python3 rest-server.py
+nohup python3 grpc-server.py &
+nohup python3 rest-server.py &
 
 
 # [END startup_script]
