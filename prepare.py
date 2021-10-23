@@ -4,13 +4,13 @@ import googleapiclient.discovery
 import google.auth
 
 
-def create_instance(compute, project, zone, name, tags, snapshot, metaScripts:dict):
+def create_instance(compute, project, zone, name, tags, metaScripts:dict):
     # Get the latest Debian Jessie image.
     image_response = compute.images().getFromFamily(
                 project='ubuntu-os-cloud', family='ubuntu-1804-lts').execute()
     source_disk_image = image_response['selfLink']
     # Configure the machine
-    machine_type = "zones/%s/machineTypes/f1-micro" % zone
+    machine_type = "zones/%s/machineTypes/e2-standard-2" % zone
     metaItems = [{'key':k,'value':open(v,'r').read()} for k,v in metaScripts.items()]
     config = {
         'name': name,
@@ -73,8 +73,7 @@ service = googleapiclient.discovery.build('compute', 'v1', credentials=credentia
 projectID = 'csci5253-327304'
 
 operation = create_instance(service,projectID,zone='us-west1-a',name='lab6-local',tags=['allow-5000'],
-                            metaScripts={'startup-script':'startup-script.sh',
-                                            'dlLab6':'dlLab6.py'})
+                            metaScripts={'startup-script':'startup-script.sh'})
 wait_for_operation(service, projectID, 'us-west1-a',operation['name'])
 
 

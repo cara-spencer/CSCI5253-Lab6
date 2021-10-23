@@ -1,3 +1,5 @@
+# deprecated
+
 from google.cloud import storage
 
 def download_blob(bucket_name, source_blob_name, destination_file_name):
