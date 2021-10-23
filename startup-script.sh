@@ -8,6 +8,7 @@ cd /home/mewu4448
 sudo apt-get update
 sudo apt-get install -y python3 python3-pip protobuf-compiler
 pip3 install google-cloud-storage grpcio grpcio_tools
+python3 -m pip install --upgrade pip
 python3 -m pip install --upgrade Pillow
 pip3 install flask jsonpickle
 sudo rm -rf CSCI5253-Lab6
